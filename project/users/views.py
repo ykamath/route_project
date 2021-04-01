@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, StatesForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -19,4 +19,10 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    if request.method == 'POST':
+        form = StatesForm(request.POST)
+        if form.is_valid():
+            picked = form.cleaned_data.get('state_name')
+    else:
+        form = StatesForm()
+    return render(request, 'users/profile.html', {'form': form})

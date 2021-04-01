@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multiselectfield',
     'tracker.apps.TrackerConfig',
     'users.apps.UsersConfig',
     'crispy_forms',

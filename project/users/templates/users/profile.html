@@ -1,6 +1,10 @@
 {% extends "tracker/base.html" %}
 {% load crispy_forms_tags %}
+
+
 {% block content %}
+  <head>
+  </head>
     <div class="content-section">
       <div class="media">
         <div class="media-body">
@@ -10,4 +14,15 @@
       </div>
       <!-- FORM HERE -->
     </div>
+    <div class="content-section">
+      <form action="/your-name/" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+
+
+
 {% endblock content %}
